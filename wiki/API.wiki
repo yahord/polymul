@@ -1,4 +1,3 @@
-#summary C++ API
 = C++ API =
 The whole library is currently contained in the header file *polymul.h*.
 
