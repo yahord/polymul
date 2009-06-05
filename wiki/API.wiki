@@ -5,7 +5,7 @@ The whole library is currently contained in the header file *polymul.h*.
 For type safety and utility functions there is a class representing polynomials:
 === template<class numtype, int Nvar, int Ndeg> class polynomial; ===
 
-Class that encapsulates binomial(Nvar+Ndeg,Ndeg) coefficients. It is safe to cast (with reinterpret_cast) an array of numtype to a polynomial, or vice versa. It is also safe to cast a polynomial to a polynomial type of lower degree, but with the same number of variables. The polynomial class supports access to the coefficients through the [] indexing operator, where the index is the order of the term described above. Nvar must be greater or equal to one, while Ndeg must be a non-negative number
+Class that encapsulates binomial(Nvar+Ndeg,Ndeg) coefficients. It is safe to cast (with reinterpret_cast) an array of numtype to a polynomial, or vice versa. It is also safe to cast a polynomial to a polynomial type of lower degree, but with the same number of variables. The polynomial class supports access to the coefficients through the `[]` indexing operator, where the index is the order of the term described above. Nvar must be greater or equal to one, while Ndeg must be a non-negative number
 
 The scalar type numtype can be any type that supports the + and * operators, and which has a commuting product.
 
@@ -17,11 +17,11 @@ Constructors for polynomial. If the c0 argument is given the polynomial is set t
 Set all coefficients to 0.
 === static int polynomial::size(); ===
 Return the number of coefficients (terms). This is a compile-time constant.
-=== numtype polynomial::eval(const numtype x[Nvar]); ===
+=== numtype polynomial::eval(const numtype x`[Nvar]`); ===
 Evaluate the polynomial at x. This is reasonable fast but may not be optimal in terms of number of multiplications and additions.
-=== void polynomial::exponents(int term, int exponents[Nvar]); ===
+=== void polynomial::exponents(int term, int exponents`[Nvar]`); ===
 Calculate the exponents of term, using a very slow method. This is intended for printing, not for fast computation.
-=== int polynomial::term_index(int exponents[Nvar]); ===
+=== int polynomial::term_index(int exponents`[Nvar]`); ===
 Return the index of the term with exponents. Again, this is a slow function intended for printing and debugging.
 
 == Multiplication functions ==
