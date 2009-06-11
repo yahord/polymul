@@ -8,7 +8,7 @@ For type safety and utility functions there is a class representing polynomials:
 
 Class that encapsulates binomial(Nvar+Ndeg,Ndeg) coefficients. It is safe to cast (with reinterpret_cast) an array of numtype to a polynomial, or vice versa. It is also safe to cast a polynomial to a polynomial type of lower degree, but with the same number of variables. The polynomial class supports access to the coefficients through the `[]` indexing operator, where the index is the order of the term described in [CoefficientOrder]. Nvar must be greater or equal to one, while Ndeg must be a non-negative number
 
-The scalar type numtype can be any type that supports the + and * operators, and which has a commuting product.
+The scalar type numtype can be any type that supports the + and `*` operators, and which has a commuting product.
 
 The polynomial class has the following methods:
 === polynomial::polynomial(); ===
