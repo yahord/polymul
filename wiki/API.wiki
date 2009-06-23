@@ -1,6 +1,7 @@
 #labels Featured
 = C++ API =
 Note that this documentation refers to the current development version in SVN.
+*If there is anything you are missing in this documentation please leave a comment at the bottom of the page.*
 
 The whole library is currently contained in the header file *polymul.h*.
 
