@@ -22,7 +22,7 @@ Set all coefficients to 0.
 === static int polynomial::size(); ===
 Return the number of coefficients (terms). This is a compile-time constant.
 === numtype polynomial::eval(const numtype x`[Nvar]`); ===
-Evaluate the polynomial at x. This is reasonably fast but may not be optimal in terms of number of multiplications and additions.
+Evaluate the polynomial at x. This is reasonably fast but may not be optimal in terms of number of multiplications and additions. (In the development version *x* can be of a different type than the coefficient type, for exampel a matrix.)
 === void polynomial::exponents(int term, int exponents`[Nvar]`); ===
 Calculate the exponents of term, using a very slow method. This is intended for printing, not for fast computation.
 === int polynomial::term_index(int exponents`[Nvar]`); ===
