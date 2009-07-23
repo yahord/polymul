@@ -3,7 +3,7 @@
 Note that this documentation refers to the current development version in SVN.
 *If there is anything you are missing in this documentation please leave a comment at the bottom of the page.*
 
-For optimized builds you should compile with -DNDEBUG to turn off bounds checking for operator[]. This can have a huge impact on performance.
+For optimized builds you should compile with -DNDEBUG to turn off bounds checking for operator`[]`. This can have a huge impact on performance.
 
 The whole library is currently contained in the header file *polymul.h*.
 
