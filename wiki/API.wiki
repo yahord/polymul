@@ -7,6 +7,10 @@ For optimized builds you should compile with -DNDEBUG to turn off bounds checkin
 
 The whole library is currently contained in the header file *polymul.h*.
 
+== General functions ==
+=== `int polylen(int Nvar, int Ndeg);` ===
+Return the number of terms in a polynomial of Nvar variables and Ndeg degee (=binomial(Nvar+Ndeg,Ndeg)).
+
 == Polynomial container class ==
 For type safety and utility functions there is a class representing polynomials:
 === template<class numtype, int Nvar, int Ndeg> class polynomial; ===
@@ -16,27 +20,27 @@ Class that encapsulates an Nvar variable Ndeg degree polynomial, with binomial(N
 The scalar type numtype can be any type that supports the +,`*`,+= and `*`= operators, and which has a commuting product.
 
 The polynomial class has the following methods:
-=== polynomial::polynomial(); ===
-=== polynomial::polynomial(const numtype &c0); ===
+=== `polynomial::polynomial();` ===
+=== `polynomial::polynomial(const numtype &c0);` ===
 Constructors for polynomial. If the c0 argument is given the polynomial is set to zero except the constant term which is set to c0.
-=== void polynomial::zero(); ===
-Set all coefficients to 0.
-=== static int polynomial::size(); ===
-Return the number of coefficients (terms). This is a compile-time constant.
-=== numtype polynomial::eval(const numtype x`[Nvar]`); ===
-Evaluate the polynomial at x. This is reasonably fast but may not be optimal in terms of number of multiplications and additions. (In the development version *x* can be of a different type than the coefficient type, for exampel a matrix.)
-=== void polynomial::exponents(int term, int exponents`[Nvar]`); ===
+=== `polynomial::operator=(const numtype &c0)` ===
+Set the constant coefficient to c0, all other coefficients to 0. This replaces `polynomial::zero()` from previous versions. 
+=== `enum polynomial::size;` ===
+The number of coefficients (terms). This is a compile-time constant (and not a function as in early versions).
+=== `numtype polynomial::eval(const numtype x[Nvar]);` ===
+Evaluate the polynomial at x. This is reasonably fast but may not be optimal in terms of number of multiplications and additions. The variables *x* can be of a different type than the coefficient type.
+=== `void polynomial::exponents(int term, int exponents[Nvar]);` ===
 Calculate the exponents of term, using a very slow method. This is intended for printing, not for fast computation.
-=== int polynomial::term_index(int exponents`[Nvar]`); ===
+=== `int polynomial::term_index(int exponents[Nvar]);` ===
 Return the index of the term with exponents. Again, this is a slow function intended for printing and debugging.
 
 == Multiplication functions ==
 A few different functions are provided for multiplying polynomials. These functions are not methods of polynomial. Template arguments have been omitted below, check polymul.h for details. You can use these functions directly on coefficient arrays by using an appropriate reinterpret_cast.
-=== void polymul(polynomial &dst, const polynomial &p1, const polynomial &p2); ===
+=== `void polymul(polynomial &dst, const polynomial &p1, const polynomial &p2);` ===
 Multiply two polynomials with the same number of variables, p1 and p2, and put the result in dst (a polynomial of the right degree to fit the product exactly). Note that the degree of p1 and p2 does not have to be the same, but dst must have the exact right order to be able to represent the product.
 
-=== void taylormul(polynomial &dst, const polynomial &p1, const polynomial &p2); ===
+=== `void taylormul(polynomial &dst, const polynomial &p1, const polynomial &p2);` ===
 Here dst, p1 and p2 are polynomials of the same degree. The product of p1 and p2 is put in dst, but only those terms up to the original order of the polynomials (the higher terms are not calculated). The name comes from the usefulness of this function in calculating the product of Taylor expansions.
 
-=== void taylormul(polynomial &p1, const polynomial &p2); ===
-Like taylormul(), but computes p1 = p1*p2 in-place, using no temporary storage.
+=== `void taylormul(polynomial &p1, const polynomial &p2);` ===
+Like taylormul(), but computes p1 = p1*p2 in-place, using no temporary storage. The second argument can have lower degree than the first.
