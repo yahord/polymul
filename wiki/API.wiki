@@ -9,7 +9,7 @@ The whole library is currently contained in the header file *polymul.h*.
 
 == General functions ==
 === `int polylen(int Nvar, int Ndeg);` ===
-Return the number of terms in a polynomial of Nvar variables and Ndeg degee (=binomial(Nvar+Ndeg,Ndeg)).
+Return the number of terms in a polynomial of Nvar variables and Ndeg degee (=binomial(Nvar+Ndeg,Ndeg)). If Nvar and Ndeg are known at compile time you can also use for example `polynomial<int,Nvar,Ndeg>::size`, see below.
 
 == Polynomial container class ==
 For type safety and utility functions there is a class representing polynomials:
