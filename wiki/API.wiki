@@ -48,3 +48,13 @@ Like taylormul(), but computes p1 = p1*p2 in-place, using no temporary storage. 
 === `void polycontract(polynomial &P, const polynomial &p2, const polynomial &p3);` ===
 Consider the expression `dot(p1*p2,p3)`, where `dot()` is a sum of the products of polynomial coefficients. The `polycontract()` function computes P, so that 
 `dot(p1*p2,p3) = dot(p1,P)`. If there are many p1's for each p2 and p3 this can improve performance considerably in certain applications.
+
+== Utility functions ==
+These functions are only available in the development version at the moment.
+
+=== `void polydfac(polynomial &p)` ===
+Multiply each term in the polynomial with appropriate factorials to generate derivatives, i.e. the coefficient of the term x^n y^m z^k would be multiplied by n!m!k!.
+NOTE: The factors are generated as enums, limiting the numeric range to rather small values.
+
+=== `void polytrans(polynomial &dst, const polynomial &src, const numtype T[Nvar_src*Nvar_dst])` ===
+Perform a linear change of variables, so that the `n`:th variable in `src` is replaced by a weighted sum of the variables in `dst`, taken from "column" `n` of the matrix T. T is then the inverse of the Jacobian matrix for this change of variables.The polynomials `src` and `dst` can have different number of variables - it is for example possible to pick out a lower dimensional polynomial of a certain subspace.
