@@ -1,4 +1,3 @@
-#Installation instructions
 = Installation =
 You install polymul by copying the include file `polymul.h` to a suitable location where
 your compiler can find it. However, because the library depends strongly on how your compiler
