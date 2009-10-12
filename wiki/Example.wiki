@@ -2,11 +2,11 @@
 
 This is a small example program that multiplies two polynomials and prints the result.
 
-`
+{{{
 #include <iostream>
 #include "polymul.h"
 
 int main(void)
 {
 }
-`
+}}}
