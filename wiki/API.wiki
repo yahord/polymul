@@ -50,7 +50,6 @@ Consider the expression `dot(p1*p2,p3)`, where `dot()` is a sum of the products 
 `dot(p1*p2,p3) = dot(p1,P)`. If there are many p1's for each p2 and p3 this can improve performance considerably in certain applications.
 
 == Utility functions ==
-These functions are only available in the development version at the moment.
 
 === `void polydfac(polynomial &p)` ===
 Multiply each term in the polynomial with appropriate factorials to generate derivatives, i.e. the coefficient of the term `x^n y^m z^k` would be multiplied by n!m!k!.
