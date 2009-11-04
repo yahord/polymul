@@ -21,25 +21,31 @@ The scalar type numtype can be any type that supports the +,`*`,+= and `*`= oper
 
 The polynomial class has the following methods:
 === `polynomial::polynomial();` ===
+
 === `polynomial::polynomial(const numtype &c0);` ===
 Constructors for polynomial. If the c0 argument is given the polynomial is set to zero except the constant term which is set to c0.
+
 === `polynomial::operator=(const numtype &c0)` ===
 Set the constant coefficient to c0, all other coefficients to 0. This replaces `polynomial::zero()` from previous versions. 
+
 === `enum polynomial::size;` ===
 The number of coefficients (terms). This is a compile-time constant (and not a function as in early versions).
+
 === `numtype polynomial::eval(const numtype x[Nvar]);` ===
 Evaluate the polynomial at x. This is reasonably fast but may not be optimal in terms of number of multiplications and additions. The variables *x* can be of a different type than the coefficient type.
+
 === `void polynomial::exponents(int term, int exponents[Nvar]);` ===
 Calculate the exponents of term, using a very slow method. This is intended for printing, not for fast computation.
+
 === `int polynomial::term_index(int exponents[Nvar]);` ===
 Return the index of the term with exponents. Again, this is a slow function intended for printing and debugging.
 
-=== In development: ===
-The following two methods are only available in the development version:
 === `void polynomial::convert_to(polynomial &p)` ===
 Convert this to fit into p, which can have different degree or different type of coefficients. If p has higher degree than this then the high order coefficients will be set to zero, but if p has lower degree then only the lower order coefficients will be copied.
+
 === `template<int var> void polynomial::diff(polynomial &dp)` ===
 Compute the derivative of this with respect to variable `var`, put the result in dp (a polynomial of one degree lower than this). Use like `p.diff<2>(dp);`.
+
 == Multiplication functions ==
 A few different functions are provided for multiplying polynomials. These functions are not methods of polynomial. Template arguments have been omitted below, so check polymul.h for details. You can use these functions directly on coefficient arrays by using an appropriate reinterpret_cast.
 === `void polymul(polynomial &dst, const polynomial &p1, const polynomial &p2);` ===
